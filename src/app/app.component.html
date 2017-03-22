@@ -1,3 +1,77 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  <a class="navbar-brand" href="#">Player Stats:  Provided by <a href="http://menmo.github.io/eliteprospects-api-documentation/" target="_blank">Eliteprospects.com</a></a>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <!--<li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>-->
+    </ul>
+    <!--<form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+      <ul class="nav nav-pills flex-column">
+        <!--<li class="nav-item">
+          <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Stats</a>
+        </li>
+      </ul>
+
+      <!--<ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nav item</a>
+        </li>
+      </ul>-->
+    </nav>
+
+    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+      <h1>Dashboard</h1>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search by name..." [formControl]="searchControl">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" (click)="onSearch()">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card" *ngFor="let player of searchResults">
+            <div class="card-block">
+              <h4 class="card-title">{{player.firstName}} {{player.lastName}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{player.latestPlayerStats.team.name}} | DOB: {{player.yearOfBirth}} | {{player.caphit}} | {{player.playerPosition}}
+                | {{player.playerStatus}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                A: {{player.latestPlayerStats.A}} | G: {{player.latestPlayerStats.G}} | GP: {{player.latestPlayerStats.GP}} | PIM: {{player.latestPlayerStats.PIM}}
+                | PPG: {{player.latestPlayerStats.PPG}} | TP: {{player.latestPlayerStats.TP}}
+              </h6>
+              <p class="card-text">{{player.profileDescription?.info}}</p>
+              <!--<a href="#" class="btn btn-primary">See Stats</a>-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </main>
+  </div>
+</div>
